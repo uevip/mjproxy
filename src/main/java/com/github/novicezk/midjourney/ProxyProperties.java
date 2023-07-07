@@ -51,6 +51,14 @@ public class ProxyProperties {
 	 * 任务状态变更回调地址.
 	 */
 	private String notifyHook;
+	/**
+	 * 通知回调线程池大小.
+	 */
+	private int notifyPoolSize = 10;
+	/**
+	 * 接口是否返回任务扩展属性.
+	 */
+	private boolean includeTaskExtended = false;
 
 	@Data
 	public static class DiscordConfig {
@@ -67,25 +75,21 @@ public class ProxyProperties {
 		 */
 		private String userToken;
 		/**
-		 * 是否使用user_token连接wss，默认启用.
+		 * 你的频道id.
 		 */
-		private boolean userWss = true;
+		private String sessionId = "9c4055428e13bcbf2248a6b36084c5f3";
 		/**
 		 * 调用discord接口、连接wss时的user-agent.
 		 */
 		private String userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36";
 		/**
+		 * 是否使用user_token连接wss，默认启用.
+		 */
+		private boolean userWss = true;
+		/**
 		 * 你的机器人token.
 		 */
 		private String botToken;
-		/**
-		 * prompt拼接ID的前缀，可使用多个字符，不要使用 '\' 字符.
-		 */
-		private String idPrefix = "[";
-		/**
-		 * prompt拼接ID的后缀，可使用多个字符，不要使用 '\' 字符.
-		 */
-		private String idSuffix = "]";
 	}
 
 	@Data
@@ -102,6 +106,10 @@ public class ProxyProperties {
 
 	@Data
 	public static class OpenaiConfig {
+		/**
+		 * 自定义gpt的api-url.
+		 */
+		private String gptApiUrl;
 		/**
 		 * gpt的api-key.
 		 */
